@@ -1,60 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Assignments Dashboard</title>
+    <title>Assignments Dashboard - Shelves</title>
     <link rel="stylesheet" href="/assignments.css" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            <div class="nav-title-wrapper">
+                <h2 class="nav-title">Assignments Dashboard</h2>
+            </div>
+        </div>
+    </nav>
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-    </style>
-  </head>
-  <body class="text-white min-h-screen p-6 md:p-12 flex flex-col items-center">
-    <h1
-      class="text-5xl md:text-7xl font-extrabold mb-16 tracking-wide text-center pt-8"
-    >
-      Assignments
-    </h1>
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <div class="header-content">
+                <h1 class="page-title">
+                    <span class="title-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            <path d="M9 12h6m-6 4h6"/>
+                        </svg>
+                    </span>
+                    Assignments
+                </h1>
+                <p class="page-subtitle">Track your academic assignments and deadlines</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon stat-total">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total</p>
+                        <p class="stat-value">3</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon stat-score">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Average Score</p>
+                        <p class="stat-value">8.3</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon stat-pending">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Completed</p>
+                        <p class="stat-value">100%</p>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <div class="w-full max-w-5xl">
-      <div
-        class="bg-black/20 border-2 border-white rounded-lg overflow-x-auto shadow-2xl"
-      >
-        <table class="assignment-table w-full border-collapse">
-          <thead>
-            <tr class="text-xl font-bold tracking-tight">
-              <th class="px-6 py-5 w-1/2 text-left">name of assignment</th>
-              <th class="px-6 py-5 w-1/4 text-center">date of submission</th>
-              <th class="px-6 py-5 w-1/4 text-center">marks</th>
-            </tr>
-          </thead>
-          <!-- Table Body -->
-          <tbody class="text-lg md:text-xl font-light">
-            <tr>
-              <td class="px-6 py-5 text-left">
-                FJ-1 Numerical Methods and Analysis
-              </td>
-              <td class="px-6 py-5 text-center">10/8/25</td>
-              <td class="px-6 py-5 text-center">7</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-5 text-left">FJ-2 Operating Systems</td>
-              <td class="px-6 py-5 text-center">15/8/25</td>
-              <td class="px-6 py-5 text-center">8</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-5 text-left">
-                LLJ-1 Advanced Programing Practice
-              </td>
-              <td class="px-6 py-5 text-center">13/8/25</td>
-              <td class="px-6 py-5 text-center">10</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <!-- Assignments Table -->
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table class="assignment-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="th-content">
+                                    <span>Assignment Name</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="th-content">
+                                    <span>Submission Date</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sort-icon">
+                                        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="th-content">
+                                    <span>Marks</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sort-icon">
+                                        <path d="M7 11l5-5m0 0l5 5m-5-5v12"/>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="th-content">
+                                    <span>Status</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td>
+                                <div class="assignment-name">
+                                    <span class="subject-tag subject-nma">NMA</span>
+                                    <span class="assignment-text">Numerical Methods and Analysis</span>
+                                </div>
+                            </td>
+                            <td class="date-cell">10/8/25</td>
+                            <td>
+                                <div class="marks-cell">
+                                    <span class="marks-value">7</span>
+                                    <span class="marks-total">/10</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-badge status-good">Good</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td>
+                                <div class="assignment-name">
+                                    <span class="subject-tag subject-os">OS</span>
+                                    <span class="assignment-text">Operating Systems</span>
+                                </div>
+                            </td>
+                            <td class="date-cell">15/8/25</td>
+                            <td>
+                                <div class="marks-cell">
+                                    <span class="marks-value">8</span>
+                                    <span class="marks-total">/10</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-badge status-excellent">Excellent</span>
+                            </td>
+                        </tr>
+                        <tr class="table-row">
+                            <td>
+                                <div class="assignment-name">
+                                    <span class="subject-tag subject-app">APP</span>
+                                    <span class="assignment-text">Advanced Programming Practice</span>
+                                </div>
+                            </td>
+                            <td class="date-cell">13/8/25</td>
+                            <td>
+                                <div class="marks-cell">
+                                    <span class="marks-value">10</span>
+                                    <span class="marks-total">/10</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-badge status-perfect">Perfect</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </body>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Shelves Academic Platform © 2025</p>
+    </footer>
+</body>
 </html>

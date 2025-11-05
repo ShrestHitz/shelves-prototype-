@@ -1,24 +1,505 @@
+/* ========================================
+   MODERN DARK ACADEMIC THEME - ASSIGNMENTS
+   ======================================== */
+
+/* CSS Variables */
+:root {
+    --bg-primary: #0a0e16;
+    --bg-secondary: #131821;
+    --bg-card: #1a1f2e;
+    --bg-table: #151b26;
+    --text-primary: #e6e8eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent-blue: #60a5fa;
+    --accent-purple: #a78bfa;
+    --accent-green: #34d399;
+    --accent-orange: #fb923c;
+    --accent-red: #f87171;
+    --border-color: rgba(148, 163, 184, 0.1);
+    --border-hover: rgba(148, 163, 184, 0.2);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-image: url('/src/black.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0e16 0%, #1a1f2e 50%, #0f1419 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* 2. Table Border Styling (White lines separating cells) */
-.assignment-table td,
+/* Animated Background */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Navigation Bar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 14, 22, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.nav-logo svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--accent-blue);
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.nav-logo:hover svg {
+    transform: translateX(-4px);
+}
+
+.nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.title-icon {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border-radius: 1rem;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.title-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--accent-blue);
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.stat-total {
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--accent-blue);
+}
+
+.stat-score {
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--accent-purple);
+}
+
+.stat-pending {
+    background: rgba(52, 211, 153, 0.1);
+    color: var(--accent-green);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Table Container */
+.table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table Styles */
+.assignment-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.assignment-table thead {
+    background: var(--bg-table);
+    border-bottom: 2px solid var(--border-color);
+}
+
 .assignment-table th {
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-/* 3. Border Cleanup (Removing redundant outside borders) */
-.assignment-table th:last-child,
-.assignment-table td:last-child {
-    border-right: none; /* No border on the last column */
+.th-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.assignment-table tr:last-child td {
-    border-bottom: none; /* No border on the last row */
+.sort-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.assignment-table th:hover .sort-icon {
+    opacity: 1;
+    color: var(--accent-blue);
+}
+
+.assignment-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.assignment-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.assignment-table tbody tr:hover {
+    background: rgba(96, 165, 250, 0.05);
+}
+
+.assignment-table td {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Assignment Name Cell */
+.assignment-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.subject-tag {
+    display: inline-flex;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.subject-nma {
+    background: rgba(96, 165, 250, 0.15);
+    color: var(--accent-blue);
+}
+
+.subject-os {
+    background: rgba(167, 139, 250, 0.15);
+    color: var(--accent-purple);
+}
+
+.subject-app {
+    background: rgba(52, 211, 153, 0.15);
+    color: var(--accent-green);
+}
+
+.assignment-text {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Date Cell */
+.date-cell {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Marks Cell */
+.marks-cell {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.marks-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.marks-total {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-good {
+    background: rgba(251, 146, 60, 0.15);
+    color: var(--accent-orange);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.status-excellent {
+    background: rgba(96, 165, 250, 0.15);
+    color: var(--accent-blue);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.status-perfect {
+    background: rgba(52, 211, 153, 0.15);
+    color: var(--accent-green);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        flex-direction: column;
+    }
+    
+    .nav-content {
+        padding: 1rem;
+    }
+    
+    .nav-title {
+        display: none;
+    }
+    
+    .assignment-table th,
+    .assignment-table td {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .assignment-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
 }

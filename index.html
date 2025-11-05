@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/first_page.css" />
-    <title>front page</title>
-  </head>
-  <body>
-    <h1 class="montserrat">SHELVES</h1>
-    <table class="h4-table">
-      <tr>
-        <td>
-          <a href="/assignments.html" style="text-decoration: none">
-            <h4>Assignments</h4>
-          </a>
-        </td>
-        <td>
-          <a href="/learning_materials.html"><h4>Learning Material</h4></a>
-        </td>
-      </tr>
-      <tr>
-        <td><h4>Community</h4></td>
-        <td><h4>Account</h4></td>
-      </tr>
-    </table>
-  </body>
+    <title>Shelves - Academic Resource Hub</title>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <h1 class="main-title">SHELVES</h1>
+                <p class="subtitle">Your Academic Resource Platform</p>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="card-grid card-grid-2x2">
+                <!-- Top row -->
+                <a href="/assignments.html" class="card card-assignments">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            <path d="M9 12h6m-6 4h6"/>
+                        </svg>
+                    </div>
+                    <h2 class="card-title">Assignments</h2>
+                    <p class="card-description">Track and manage your academic assignments</p>
+                    <div class="card-hover-effect"></div>
+                </a>
+
+                <a href="/learning_materials.html" class="card card-materials">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h2 class="card-title">Learning Materials</h2>
+                    <p class="card-description">Access curated study resources and materials</p>
+                    <div class="card-hover-effect"></div>
+                </a>
+
+                <!-- Bottom row -->
+                <a href="#community" class="card card-community">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="card-title">Community</h2>
+                    <p class="card-description">Connect with peers and collaborate</p>
+                    <div class="card-hover-effect"></div>
+                </a>
+
+                <a href="#account" class="card card-account">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                    </div>
+                    <h2 class="card-title">Account</h2>
+                    <p class="card-description">Manage your profile and settings</p>
+                    <div class="card-hover-effect"></div>
+                </a>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Built by Swarnava & Shreasth</p>
+        </footer>
+    </div>
+</body>
 </html>
