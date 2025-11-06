@@ -1,8 +1,4 @@
-/* ========================================
-   MODERN DARK ACADEMIC THEME - LEARNING MATERIALS
-   ======================================== */
 
-/* CSS Variables */
 :root {
     --bg-primary: #0a0e16;
     --bg-secondary: #131821;
@@ -10,8 +6,7 @@
     --text-primary: #e6e8eb;
     --text-secondary: #9ca3af;
     --text-muted: #6b7280;
-    
-    /* Subject-specific colors */
+
     --color-app: #34d399;
     --color-os: #a78bfa;
     --color-dsa: #60a5fa;
@@ -24,7 +19,6 @@
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +34,6 @@ body {
     position: relative;
 }
 
-/* Animated Background */
 .background-gradient {
     position: fixed;
     top: 0;
@@ -61,7 +54,6 @@ body {
     50% { opacity: 0.8; transform: scale(1.1); }
 }
 
-/* Navigation Bar */
 .navbar {
     position: sticky;
     top: 0;
