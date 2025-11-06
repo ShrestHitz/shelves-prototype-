@@ -1,0 +1,17 @@
+# Ignore accidentally copying frontend into backend
+/backend/*.html
+/backend/*.css
+/backend/js/
+
+# Java/IDE files
+*.class
+*.log
+*.jar
+target/
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

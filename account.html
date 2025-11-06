@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management - Shelves</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assignments.css">
+    <style>
+        .account-form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="assignments.html">Assignments</a>
+            <a href="learning_materials.html">Learning Materials</a>
+            <a href="account.html" class="active">Account</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Account Management</h1>
+        
+        <div class="account-form">
+            <form id="accountForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enrollmentNumber">Enrollment Number</label>
+                    <input type="text" id="enrollmentNumber" name="enrollmentNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" id="department" name="department" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="semester">Semester</label>
+                    <input type="number" id="semester" name="semester" min="1" max="8" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Create Account</button>
+                <div id="formMessage"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Backend API URL
+    const API_URL = 'http://localhost:8080/api/users/register';
+
+    // Get form element
+    const form = document.getElementById('accountForm');
+
+    // Listen for form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const userData = {
+            username: document.getElementById('username').value,
+            fullName: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            enrollmentNumber: document.getElementById('enrollmentNumber').value,
+            department: document.getElementById('department').value,
+            semester: parseInt(document.getElementById('semester').value)
+        };
+
+        // Show loading message
+        document.getElementById('formMessage').innerHTML = '<p>Creating account...</p>';
+
+        try {
+            // Send POST request to backend
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Success!
+                document.getElementById('formMessage').innerHTML = 
+                    `<p style="color: green; font-weight: bold;">✅ ${data.message}</p>`;
+                form.reset();
+                console.log('Account created! ID:', data.userId);
+            } else {
+                // Error from backend
+                document.getElementById('formMessage').innerHTML = 
+                    `<p style="color: red; font-weight: bold;">❌ ${data.error || 'Failed to create account'}</p>`;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('formMessage').innerHTML = 
+                '<p style="color: red; font-weight: bold;">❌ Network error. Make sure backend is running!</p>';
+        }
+    });
+</script>
+</body>
+</html>
