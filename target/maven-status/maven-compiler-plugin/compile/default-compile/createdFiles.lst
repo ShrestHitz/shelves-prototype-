@@ -1,0 +1,7 @@
+com\shelves\backend\model\LearningMaterial.class
+com\shelves\backend\controller\AssignmentController.class
+com\shelves\backend\model\Assignment.class
+com\shelves\backend\controller\LearningMaterialController.class
+com\shelves\backend\repository\LearningMaterialRepository.class
+com\shelves\backend\repository\AssignmentRepository.class
+com\shelves\backend\ShelvesBackendApplication.class
