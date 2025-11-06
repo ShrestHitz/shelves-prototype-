@@ -4,4 +4,4 @@ first prototype for project shelves
 
 members:
 Swarnava
-Shreasth
+Shresth
